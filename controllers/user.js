@@ -1,3 +1,6 @@
 module.exports.profile = (req,res) => {
-    return res.end('<h1>Hello, Dear User 👤</h1>');
+    return res.render('users',{
+        title : "Profile",
+        description: "My Name is Veena ! I love to do coding 👩🏽‍💻👩‍💻"
+    });
 }
