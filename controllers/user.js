@@ -34,7 +34,7 @@ module.exports.create = async (req,res) => {
         return res.redirect('back');
     }
     } catch (error) {
-        console.log("SOmething went wrong while signup", error);
+        console.log("Something went wrong while signup", error);
     }
     
 //    }
