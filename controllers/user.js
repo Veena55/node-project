@@ -1,3 +1,4 @@
+const User = require('../models/users');
 module.exports.profile = (req,res) => {
     return res.render('users',{
         title : "Profile",
@@ -18,8 +19,25 @@ module.exports.sign_up = function (req,res) {
 }
 
 //get the signup data
-module.exports.create = (req,res) => {
-    //To do later
+module.exports.create = async (req,res) => {
+    try {
+        
+        if(req.body.password != req.body.confirm_password) {
+         return res.redirect('back');
+        }
+        let user = await User.findOne({email: req.body.email});     
+         if(!user) {
+             const result = await User.create(req.body);
+             console.log(result);
+        return res.redirect('/users/signin');
+    } else {
+        return res.redirect('back');
+    }
+    } catch (error) {
+        console.log("SOmething went wrong while signup", error);
+    }
+    
+//    }
 }
 
 //sign in and create a session for the user
