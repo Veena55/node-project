@@ -1,7 +1,14 @@
 <h1>Codieal / <%= title %></h1>
 <section>
-    <form action="" method="post">
+    <% if(locals.user) { %>
+    <form action="/posts/create-post" method="POST">
         <textarea name="content" rows="3" cols="30"></textarea>
         <input type="submit" value="Create Post">
     </form>
+    <!-- All posts list -->
+    <% allPosts.forEach(item => { %>
+        <p><b>Content: </b></ba><%= item.content %></p>
+        <p><b>Posted By: </b><%= item.user.name %></p>
+        <% }); %>
+        <% } %>
 </section>
